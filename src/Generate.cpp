@@ -194,9 +194,10 @@ GInt_t main(void)
 
 	clock_gettime(CLOCK_REALTIME, &time2);
 
-	GReal_t cpu_time_used;
+	GReal_t cpu_time_used = phsp.GetEvtTime();
+	/*
 	cpu_time_used = ((GReal_t) (time_diff(time1, time2).tv_sec
-			+ time_diff(time1, time2).tv_nsec * 1.0e-9));
+			+ time_diff(time1, time2).tv_nsec * 1.0e-9));*/
 
 	cout << "|\t Generate time [B0]:\t " << cpu_time_used << " s" << endl;
 
@@ -257,9 +258,10 @@ GInt_t main(void)
 	phspJpsi.Generate(phsp.GetDaughters(0));
 	clock_gettime(CLOCK_REALTIME, &time2);
 
-	GReal_t cpu_time_usedJpsi;
+	GReal_t cpu_time_usedJpsi = phspJpsi.GetEvtTime();
+	/*
 	cpu_time_usedJpsi = ((GReal_t) (time_diff(time1, time2).tv_sec
-			+ time_diff(time1, time2).tv_nsec * 1.0e-9));
+			+ time_diff(time1, time2).tv_nsec * 1.0e-9));*/
 
 	cout << "|\t Generate time [J/psi]:\t " << cpu_time_usedJpsi << " s"
 			<< endl;
