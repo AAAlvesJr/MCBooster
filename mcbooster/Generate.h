@@ -67,7 +67,7 @@
 #include <thrust/sort.h>
 #include <thrust/iterator/counting_iterator.h>
 
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB)
+#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
 #include <thrust/system/cuda/execution_policy.h>
 #endif
 
@@ -404,7 +404,7 @@ void PhaseSpace::ExportUnweighted(Events *_Events) {
 
 	_Events->fMaxWeight = fMaxWeight;
 
-#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB
+#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB
 
 #pragma omp parallel num_threads( fNDaughters + 1 )
 	{
@@ -477,7 +477,7 @@ void PhaseSpace::Export(Events *_Events) {
 	 */
 	_Events->fMaxWeight = fMaxWeight;
 
-#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB
+#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB
 
 #pragma omp parallel num_threads( fNDaughters + 1 )
 	{
@@ -544,7 +544,7 @@ void PhaseSpace::Generate(const Vector4R fMother) {
 	 * in any system of reference. The daughters will be generated in this system.
 	 */
 
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB)
+#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
 	cudaDeviceSetCacheConfig(cudaFuncCachePreferL1);
 #endif
 	/* random number generation */
@@ -671,7 +671,7 @@ void PhaseSpace::Generate(Particles_d fMothers) {
 	 * Run the generator and calculate the maximum weight. It takes as input the device vector with the four-vectors of the mother particle
 	 * in any system of reference. The daughters will be generated in this system.
 	 */
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB)
+#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
 	cudaDeviceSetCacheConfig(cudaFuncCachePreferL1);
 #endif
 

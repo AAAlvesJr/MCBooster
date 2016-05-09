@@ -31,7 +31,7 @@
 #include <time.h>
 #include <string>
 #include <map>
-
+#include <omp.h>
 #include <math.h>
 
 #define CUDA_API_PER_THREAD_DEFAULT_STREAM
@@ -188,14 +188,12 @@ GInt_t main(void)
 			<< endl;
 
 	clock_gettime(CLOCK_REALTIME, &time1);
-
 	/// Generate events B0-> K pi J/psi
 	phsp.Generate(Vector4R(5.2795, 0.0, 0.0, 0.0));
-
 	clock_gettime(CLOCK_REALTIME, &time2);
-
 	GReal_t cpu_time_used = phsp.GetEvtTime();
-	/*
+
+    /*
 	cpu_time_used = ((GReal_t) (time_diff(time1, time2).tv_sec
 			+ time_diff(time1, time2).tv_nsec * 1.0e-9));*/
 

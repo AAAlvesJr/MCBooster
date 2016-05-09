@@ -280,7 +280,7 @@ void EvaluateArray(const CUSTOMFUNC funcObj, ParticlesSet_d &pset,
 
 	}
 
-#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB
+#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB
 
 #pragma omp parallel num_threads(  arrayWidth )
 	{
@@ -319,13 +319,13 @@ void EvaluateArray(const CUSTOMFUNC funcObj, ParticlesSet_d &pset,
 	return;
 }
 
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB)
+#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
 
 /** Template functor for calculate an array of variables over a given set of particles.
  * Template functor for evaluate an arbitrary function object over the a set of particles stored
  * in the device. The function is supposed to evaluate at once many variables and the results are returned to the
  * __device__ via a given VariableSet_h. Datasets with up to nine particles  can be handled. __This function is available
- * only for CUDA backends.__
+ * only for CUDA SYSTEMs.__
  */
 
 template<typename CUSTOMFUNC>
@@ -561,7 +561,7 @@ void EvaluateArray(const CUSTOMFUNC funcObj, ParticlesSet_d &pset,
 
 	}
 
-#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_BACKEND_TBB
+#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB
 
 #pragma omp parallel num_threads(  arrayWidth )
 	{
