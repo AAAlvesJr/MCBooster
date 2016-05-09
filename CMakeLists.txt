@@ -150,7 +150,7 @@ if(BUILD_CUDA_TARGETS)
 		
 	cuda_add_executable(MCBooster_Example_OpenMP_NVCC_B2KPiJpsi
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Generate.cu
-	OPTIONS -Xcompiler -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp
+	OPTIONS -Xcompiler -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP  -lgomp
 	)
 	
 	target_link_libraries(MCBooster_Example_OpenMP_NVCC_B2KPiJpsi
