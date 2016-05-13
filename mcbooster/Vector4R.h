@@ -44,12 +44,12 @@
 */
 using std::ostream;
 
-class MCBooster::Vector3R;
+
 
 namespace MCBooster
 {
 
-
+class Vector3R;
 
 class Vector4R
 {

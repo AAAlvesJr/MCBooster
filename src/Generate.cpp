@@ -209,13 +209,15 @@ GInt_t main(void)
 
 		for (GInt_t daughter = 0; daughter < 3; daughter++)
 		{
+			Vector4R v= phsp.GetDaughters(daughter)[event];
+
 			cout << " \t| " << namesB0[daughter] << " : mass "
-					<< phsp.GetDaughters(daughter)[event].mass()
+					<< v.mass()
 					<< " 4-momentum ( "
-					<< phsp.GetDaughters(daughter)[event].get(0) << ", "
-					<< phsp.GetDaughters(daughter)[event].get(1) << ", "
-					<< phsp.GetDaughters(daughter)[event].get(2) << ", "
-					<< phsp.GetDaughters(daughter)[event].get(3) << ")  "
+					<< v.get(0) << ", "
+					<< v.get(1) << ", "
+					<< v.get(2) << ", "
+					<< v.get(3) << ")  "
 					<< endl;
 
 		}
@@ -273,13 +275,14 @@ GInt_t main(void)
 
 		for (GInt_t daughter = 0; daughter < 2; daughter++)
 		{
+			Vector4R v= phspJpsi.GetDaughters(daughter)[event];
 			cout << " \t| " << namesJpsi[daughter] << " : mass "
-					<< phspJpsi.GetDaughters(daughter)[event].mass()
+					<< v.mass()
 					<< " 4-momentum ( "
-					<< phspJpsi.GetDaughters(daughter)[event].get(0) << ", "
-					<< phspJpsi.GetDaughters(daughter)[event].get(1) << ", "
-					<< phspJpsi.GetDaughters(daughter)[event].get(2) << ", "
-					<< phspJpsi.GetDaughters(daughter)[event].get(3) << ")  "
+					<< v.get(0) << ", "
+					<< v.get(1) << ", "
+					<< v.get(2) << ", "
+					<< v.get(3) << ")  "
 					<< endl;
 
 		}
