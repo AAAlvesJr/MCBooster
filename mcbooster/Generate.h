@@ -67,11 +67,13 @@
 #include <thrust/sort.h>
 #include <thrust/iterator/counting_iterator.h>
 
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
+#if MCBOOSTER_BACKEND==CUDA
 #include <thrust/system/cuda/execution_policy.h>
-#endif
-
+#elif MCBOOSTER_BACKEND==OPENMP
 #include <thrust/system/omp/execution_policy.h>
+#elif MCBOOSTER_BACKEND==TBB
+#include <thrust/system/tbb/execution_policy.h>
+#endif
 
 #define TIMER CLOCK_REALTIME
 
@@ -85,7 +87,7 @@
 
 using namespace std;
 
-namespace MCBooster {
+namespace mcbooster {
 /*!
  * Function to calculate time intervals in seconds.
  */
@@ -404,8 +406,7 @@ void PhaseSpace::ExportUnweighted(Events *_Events) {
 
 	_Events->fMaxWeight = fMaxWeight;
 
-#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB
-
+#if MCBOOSTER_BACKEND!=CUDA
 #pragma omp parallel num_threads( fNDaughters + 1 )
 	{
 
@@ -477,7 +478,7 @@ void PhaseSpace::Export(Events *_Events) {
 	 */
 	_Events->fMaxWeight = fMaxWeight;
 
-#if THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB
+#if MCBOOSTER_BACKEND!=CUDA
 
 #pragma omp parallel num_threads( fNDaughters + 1 )
 	{
@@ -544,7 +545,7 @@ void PhaseSpace::Generate(const Vector4R fMother) {
 	 * in any system of reference. The daughters will be generated in this system.
 	 */
 
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
+#if MCBOOSTER_BACKEND==CUDA
 	cudaDeviceSetCacheConfig(cudaFuncCachePreferL1);
 #endif
 	/* random number generation */
@@ -671,7 +672,7 @@ void PhaseSpace::Generate(Particles_d fMothers) {
 	 * Run the generator and calculate the maximum weight. It takes as input the device vector with the four-vectors of the mother particle
 	 * in any system of reference. The daughters will be generated in this system.
 	 */
-#if !(THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_OMP || THRUST_DEVICE_SYSTEM==THRUST_DEVICE_SYSTEM_TBB)
+#if MCBOOSTER_BACKEND==CUDA
 	cudaDeviceSetCacheConfig(cudaFuncCachePreferL1);
 #endif
 

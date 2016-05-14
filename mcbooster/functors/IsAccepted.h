@@ -36,7 +36,7 @@
 #include <mcbooster/Config.h>
 #include <mcbooster/GTypes.h>
 
-namespace MCBooster
+namespace mcbooster
 {
 
 struct isAccepted

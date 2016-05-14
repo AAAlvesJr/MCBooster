@@ -36,7 +36,7 @@
 #include <math.h>
 
 using std::ostream;
-namespace MCBooster
+namespace mcbooster
 {
 class Vector3R
 {

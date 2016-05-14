@@ -121,7 +121,7 @@ if(BUILD_CUDA_TARGETS)
     
     cuda_add_executable(MCBooster_Example_OpenMP_CompareWithRoot
     ${CMAKE_CURRENT_SOURCE_DIR}/src/CompareWithTGenPhaseSpace.cu
-    OPTIONS -Xcompiler -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp
+    OPTIONS -Xcompiler -fopenmp -DMCBOOSTER_BACKEND=OMP -lgomp
     )
     
     target_link_libraries(MCBooster_Example_OpenMP_CompareWithRoot
@@ -150,7 +150,7 @@ if(BUILD_CUDA_TARGETS)
 		
 	cuda_add_executable(MCBooster_Example_OpenMP_NVCC_B2KPiJpsi
 	${CMAKE_CURRENT_SOURCE_DIR}/src/Generate.cu
-	OPTIONS -Xcompiler -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP  -lgomp
+	OPTIONS -Xcompiler -fopenmp -DMCBOOSTER_BACKEND=OMP  -lgomp
 	)
 	
 	target_link_libraries(MCBooster_Example_OpenMP_NVCC_B2KPiJpsi
@@ -169,7 +169,7 @@ if(BUILD_CUDA_TARGETS)
 	
 	cuda_add_executable(MCBooster_Example_OpenMP_NVCC_PerformanceTest
 	${CMAKE_CURRENT_SOURCE_DIR}/src/PerformanceTest.cu
-	OPTIONS -Xcompiler -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp
+	OPTIONS -Xcompiler -fopenmp -DMCBOOSTER_BACKEND=OMP -lgomp
 	)
 	
 	target_link_libraries(MCBooster_Example_OpenMP_NVCC_PerformanceTest
@@ -185,7 +185,7 @@ add_executable(MCBooster_Example_OpenMP_GCC_B2KPiJpsi
 ${CMAKE_CURRENT_SOURCE_DIR}/src/Generate.cpp
 )
 
-set_target_properties(MCBooster_Example_OpenMP_GCC_B2KPiJpsi PROPERTIES COMPILE_FLAGS  "-std=c++11 -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp" )
+set_target_properties(MCBooster_Example_OpenMP_GCC_B2KPiJpsi PROPERTIES COMPILE_FLAGS  "-std=c++11 -fopenmp -DMCBOOSTER_BACKEND=OMP -lgomp" )
 
 target_link_libraries(MCBooster_Example_OpenMP_GCC_B2KPiJpsi
 ${ROOT_LIBRARIES}
@@ -198,7 +198,7 @@ add_executable(MCBooster_Example_OpenMP_GCC_PerformanceTest
 ${CMAKE_CURRENT_SOURCE_DIR}/src/PerformanceTest.cpp
 )
 
-set_target_properties(MCBooster_Example_OpenMP_GCC_PerformanceTest PROPERTIES COMPILE_FLAGS "-std=c++11 -fopenmp -DTHRUST_DEVICE_SYSTEM=THRUST_DEVICE_SYSTEM_OMP -lgomp" )
+set_target_properties(MCBooster_Example_OpenMP_GCC_PerformanceTest PROPERTIES COMPILE_FLAGS "-std=c++11 -fopenmp -DMCBOOSTER_BACKEND=OMP -lgomp" )
 
 target_link_libraries(MCBooster_Example_OpenMP_GCC_PerformanceTest
 ${ROOT_LIBRARIES}

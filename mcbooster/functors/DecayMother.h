@@ -38,7 +38,7 @@
 
 using namespace std;
 
-namespace MCBooster
+namespace mcbooster
 {
 
 struct DecayMother

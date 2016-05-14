@@ -32,7 +32,7 @@
 #include <mcbooster/GContainers.h>
 
 
-namespace MCBooster
+namespace mcbooster
 {
 /**\struct RandGen
  * Fill a given vector with random numbers between 0 and 1.

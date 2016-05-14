@@ -53,7 +53,7 @@
 
 using namespace std;
 
-using namespace MCBooster;
+using namespace mcbooster;
 
 
 

@@ -33,7 +33,7 @@
 #include <mcbooster/GContainers.h>
 #include <mcbooster/GTypes.h>
 
-namespace MCBooster
+namespace mcbooster
 {
 
 template<typename FUNCTION, typename RESULT>

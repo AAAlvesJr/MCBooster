@@ -36,7 +36,7 @@
 #include <thrust/random.h>
 #include <mcbooster/GTypes.h>
 
-namespace MCBooster
+namespace mcbooster
 {
 /**\struct FlagAcceptReject
  * Flags generated events as accepted (1) or rejected (0).

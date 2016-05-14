@@ -59,7 +59,7 @@
 
 using namespace std;
 
-using namespace MCBooster;
+using namespace mcbooster;
 
 GInt_t factorial(GInt_t n)
 {

@@ -33,6 +33,9 @@
 #include <thrust/iterator/permutation_iterator.h>
 #include <thrust/functional.h>
 
+
+namespace mcbooster
+{
 /** \class strided_range
  * Strided range iterator original code: https://github.com/thrust/thrust/blob/master/examples/strided_range.cu
  */
@@ -89,5 +92,6 @@ protected:
 	Iterator last;
 	difference_type stride;
 };
+}
 
 #endif /* STRIDED_ITERATOR_H_ */
