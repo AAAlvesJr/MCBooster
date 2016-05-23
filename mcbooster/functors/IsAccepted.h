@@ -42,7 +42,7 @@ namespace mcbooster
 struct isAccepted
 {
   __host__ __device__
-  bool operator()(const int x)
+  inline   bool operator()(const int x)
   {
     return (x == 1 ) ;
   }

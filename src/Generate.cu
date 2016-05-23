@@ -64,7 +64,7 @@ struct Dataset: public IFunctionArray
 		dim = 4;
 	}
 
-	__host__   __device__ GReal_t cosHELANG(const Vector4R p, const Vector4R q,
+	__host__   __device__   inline  GReal_t cosHELANG(const Vector4R p, const Vector4R q,
 			const Vector4R d)
 	{
 		GReal_t pd = p * d;
@@ -79,7 +79,7 @@ struct Dataset: public IFunctionArray
 
 	}
 
-	__host__   __device__ GReal_t deltaAngle(const Vector4R& p4_p,
+	__host__   __device__   inline GReal_t deltaAngle(const Vector4R& p4_p,
 			const Vector4R& p4_d1, const Vector4R& p4_d2, const Vector4R& p4_h1,
 			const Vector4R& p4_h2)
 	{
@@ -116,7 +116,7 @@ struct Dataset: public IFunctionArray
 	}
 
 	__host__ __device__
-	void operator()(const GInt_t n, Vector4R** particles, GReal_t* variables)
+	  inline void operator()(const GInt_t n, Vector4R** particles, GReal_t* variables)
 	{
 		Vector4R pJpsi = *particles[0];
 		Vector4R pK    = *particles[1];

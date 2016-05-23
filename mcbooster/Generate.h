@@ -235,8 +235,8 @@ public:
 		fAccRejFlags.shrink_to_fit();
 	}
 
-	void Generate(Particles_d fMothers);
-	void Generate(const Vector4R fMother);
+	inline  void Generate(Particles_d fMothers);
+	inline  void Generate(const Vector4R fMother);
 
 	/**
 	 * Get the daughter with index 'i' in the mass array. It return a device vector of particles by reference.
@@ -311,11 +311,11 @@ public:
 	 * Export the events and all related information to host.
 	 */
 	void Export(Events *_Events);
-	void ExportUnweighted(Events *_Events);
+	inline  void ExportUnweighted(Events *_Events);
 	/**
 	 * Flag the accepted and rejected events
 	 */
-	GULong_t Unweight();
+	inline  GULong_t Unweight();
 
 	//
 public:
@@ -336,7 +336,7 @@ public:
 	/**
 	 * PDK function
 	 */
-	GReal_t PDK(const GReal_t a, const GReal_t b, const GReal_t c) const {
+	inline  GReal_t PDK(const GReal_t a, const GReal_t b, const GReal_t c) const {
 		//the PDK function
 		GReal_t x = (a - b - c) * (a + b + c) * (a - b + c) * (a + b - c);
 		x = sqrt(x) / (2 * a);
